@@ -5,9 +5,11 @@ import (
 	"net/http"
 
 	"github.com/codegangsta/negroni"
-	"github.com/geraldsamosir/geraldsamosir/HappyCms/Server/Content"
-	"github.com/geraldsamosir/geraldsamosir/HappyCms/Server/Static"
+	"github.com/geraldsamosir/geraldsamosir/HappyCms/Server/Config"
+	"github.com/geraldsamosir/geraldsamosir/HappyCms/Server/Service/Content"
+	"github.com/geraldsamosir/geraldsamosir/HappyCms/Server/Service/Static"
 	"github.com/gorilla/mux"
+	"github.com/spf13/viper"
 )
 
 type MainRouter struct {
@@ -26,6 +28,8 @@ func (Mr *MainRouter) Router() {
 	var StaticRouter Static.RouterStatic
 	StaticRouter.AddSignHandler(r)
 
-	fmt.Println("your server run in port")
-	http.ListenAndServe("0.0.0.0:5000", r)
+	var c Config.ConfigService
+	c.ServiceConf()
+	fmt.Println("your server run in port " + viper.GetString("port"))
+	http.ListenAndServe("0.0.0.0:"+viper.GetString("port"), r)
 }

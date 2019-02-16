@@ -1,0 +1,6 @@
+{
+    "port": "__port__",
+    "database_name": "__database_name___",
+    "database_user": "__database_user___",
+    "database_user_password": "__database_user_password__"
+}
