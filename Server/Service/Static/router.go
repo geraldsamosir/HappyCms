@@ -7,7 +7,7 @@ import (
 )
 
 const (
-	STATIC_DIR = "client/public"
+	STATIC_DIR = "client/build"
 )
 
 type RouterStatic struct {
