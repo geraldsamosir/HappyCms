@@ -1,14 +1,10 @@
 package main
 
 import (
-	// "encoding/json"
-	"fmt"
-	"net/http"
-	// "github.com/gorilla/mux"
-	// "github.com/spf13/viper"
+	"github.com/geraldsamosir/geraldsamosir/HappyCms/Server"
 )
 
 func main() {
-	fmt.Println("your server run in port")
-	http.ListenAndServe("127.0.0.1:3000", nil)
+	var app Server.MainRouter
+	app.Router()
 }
