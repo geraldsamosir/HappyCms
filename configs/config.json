@@ -1,6 +1,8 @@
 {
     "port": "5000",
     "database_name": "mobile_api_go",
-    "database_user": "root",
-    "database_user_password": "admin"
+    "database_user_password": "admin",
+    "database_host": "127.0.0.1",
+    "database_port": 27017,
+    "port": 5000
 }
