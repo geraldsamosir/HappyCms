@@ -29,10 +29,7 @@ func (Mr *MainRouter) Router() {
 	StaticRouter.AddSignHandler(r)
 
 	var c Config.ConfigService
-	var db Config.MonggodbConnector	
 	c.ServiceConf()
-	a :=  db.Connect()
-	fmt.Println(a)
 	fmt.Println("your server run in port " + viper.GetString("port"))
 	http.ListenAndServe("0.0.0.0:"+viper.GetString("port"), r)
 }
