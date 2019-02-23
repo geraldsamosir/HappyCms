@@ -6,9 +6,10 @@ import (
 )
 
 type Response struct {
-	Message    string   `json:"message" validate:"required"`
-	Status     int      `json:"status" validate:"required,number"`
-	Validation []string `json:validation`
+	Message    string      `json:"message" validate:"required"`
+	Data       interface{} `json:"data"`
+	Status     int         `json:"status" validate:"required,number"`
+	Validation []string    `json:validation`
 }
 
 func (r *Response) ResponseJSON(responseBody interface{}, res http.ResponseWriter, statusCode int) {

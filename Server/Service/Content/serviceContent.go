@@ -40,7 +40,9 @@ func (SC *ServiceContent) Create(res http.ResponseWriter, req *http.Request) {
 	if ErrBodyContent != nil {
 		SC.Message = "Validaition false"
 		SC.Validation = ErrBodyContent
+		SC.Data = Bodycontent
 		SC.Status = http.StatusBadRequest
+		Logs.Logging(SC, "validation request in create content false")
 		Response.ResponseJSON(SC, res, http.StatusBadRequest)
 		return
 	}
