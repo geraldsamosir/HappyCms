@@ -14,9 +14,7 @@ var Validation Utils.Validation
 var Logs Utils.Log
 
 type ServiceContent struct {
-	Message    string   `json:"message" validate:"required"`
-	Status     int      `json:"status" validate:"required,number"`
-	Validation []string `json:validation`
+	Utils.Response
 }
 
 func (SC *ServiceContent) WelcomeContent(res http.ResponseWriter, req *http.Request) {
