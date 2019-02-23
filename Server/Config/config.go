@@ -19,7 +19,4 @@ func (c *ConfigService) ServiceConf() {
 		fmt.Println("Config file not found...")
 	}
 
-	// log service settings
-	var logger Log
-	logger.Logging()
 }

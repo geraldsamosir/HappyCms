@@ -5,13 +5,13 @@ import (
 	"net/http"
 
 	"github.com/geraldsamosir/geraldsamosir/HappyCms/Server/Utils"
-	"github.com/sirupsen/logrus"
 	"gopkg.in/go-playground/validator.v9"
 )
 
 var Response Utils.Response
 var validate *validator.Validate
 var Validation Utils.Validation
+var Logs Utils.Log
 
 type ServiceContent struct {
 	Message    string   `json:"message" validate:"required"`
@@ -33,10 +33,7 @@ func (SC *ServiceContent) Create(res http.ResponseWriter, req *http.Request) {
 		SC.Message = "Data validation false"
 		SC.Status = http.StatusBadRequest
 		SC.Validation = append(SC.Validation, err.Error())
-		errResp, _ := json.Marshal(SC)
-		logrus.WithFields(logrus.Fields{
-			"responsetoFrontend": errResp,
-		}).Info("validation request in create content false")
+		Logs.Logging(SC, "validation request in create content false")
 		Response.ResponseJSON(SC, res, http.StatusBadRequest)
 		return
 	}
