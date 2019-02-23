@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	CollectionName = "Artikel"
+	collectionName = "Artikel"
 )
 
 type DataContent struct {
@@ -19,6 +19,6 @@ type DataContent struct {
 func (d *DataContent) Models() *mgo.Collection {
 	var Database Config.MonggodbConnector
 	connect := Database.Connect()
-	collection := connect.C(CollectionName)
+	collection := connect.C(collectionName)
 	return collection
 }

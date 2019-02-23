@@ -1,3 +1,4 @@
 client/node_modules
 client/config.json
+server/logs/*.log
 .vscode

@@ -10,6 +10,7 @@ type ConfigService struct {
 }
 
 func (c *ConfigService) ServiceConf() {
+	// configuration file settings
 	viper.AddConfigPath("configs/.")
 	viper.SetConfigType("json")
 	err := viper.ReadInConfig()
@@ -17,4 +18,8 @@ func (c *ConfigService) ServiceConf() {
 		fmt.Println(err)
 		fmt.Println("Config file not found...")
 	}
+
+	// log service settings
+	var logger Log
+	logger.Logging()
 }
