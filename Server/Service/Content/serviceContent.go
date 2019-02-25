@@ -25,9 +25,9 @@ func (SC *ServiceContent) WelcomeContent(res http.ResponseWriter, req *http.Requ
 
 func (SC *ServiceContent) Create(res http.ResponseWriter, req *http.Request) {
 	var content DataContent
-	Bodycontent := &ServiceContent{}
+	Bodycontent := &DataContent{}
+	SC.Validation = nil
 	if err := json.NewDecoder(req.Body).Decode(Bodycontent); err != nil {
-		SC.Validation = nil
 		SC.Message = "Data validation false"
 		SC.Status = http.StatusBadRequest
 		SC.Validation = append(SC.Validation, err.Error())
@@ -40,17 +40,12 @@ func (SC *ServiceContent) Create(res http.ResponseWriter, req *http.Request) {
 	if ErrBodyContent != nil {
 		SC.Message = "Validaition false"
 		SC.Validation = ErrBodyContent
-		SC.Data = Bodycontent
 		SC.Status = http.StatusBadRequest
 		Logs.Logging(SC, "validation request in create content false")
 		Response.ResponseJSON(SC, res, http.StatusBadRequest)
 		return
 	}
 	modelContent := content.Models()
-	content.Title = "CIE JONES BANGET"
-	content.Author = "GERALD"
-	content.Categories = "JOKE"
-	content.Content = "Contentnya"
 	err := modelContent.Insert(content)
 	if err != nil {
 		panic(err)

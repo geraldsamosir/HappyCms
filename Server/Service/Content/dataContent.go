@@ -6,14 +6,14 @@ import (
 )
 
 const (
-	collectionName = "Artikel"
+	collectionName = "Content"
 )
 
 type DataContent struct {
-	Title      string
-	Author     string
-	Categories string
-	Content    string
+	Title      string `json:"title" validate:"required"`
+	Author     string `json:"author" validate:"required"`
+	Categories string `json:"categories" validate:"required"`
+	Content    string `json:"content"`
 }
 
 func (d *DataContent) Models() *mgo.Collection {
